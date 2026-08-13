@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="Primordial Velocity — a fan-made interactive showcase pairing Tensura's four Tempest-aligned Primordial Demons with the supercars that inspired their names." />
+    <title>Primordial Velocity — Black Numbers</title>
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="cinema-bars" aria-hidden="true"><i></i><i></i></div>
+    <div class="film-hud" aria-hidden="true">
+      <span class="film-rec"><i></i> REC / ARCHIVE 04</span>
+      <span class="film-timecode" id="filmTimecode">00:00:00:00</span>
+      <span class="film-act" id="filmAct">PROLOGUE</span>
+    </div>
+    <div class="film-subtitle" id="filmSubtitle" aria-live="polite">Before names, there were colors.</div>
+
+    <div class="loader" id="loader" role="status" aria-live="polite">
+      <div class="loader-mark">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="27"></circle>
+          <path d="M18 43 32 14l14 29M23 34h18"></path>
+        </svg>
+      </div>
+      <div class="loader-copy">
+        <span>Initializing black-number archive</span>
+        <strong id="loaderPercent">00</strong>
+      </div>
+      <div class="loader-track"><i id="loaderBar"></i></div>
+    </div>
+
+    <header class="topbar" id="topbar">
+      <a class="brand" href="#top" aria-label="Primordial Velocity home">
+        <span class="brand-sigil">PØ</span>
+        <span class="brand-word"><b>PRIMORDIAL</b><small>VELOCITY / 04</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#mythos">Mythos</a>
+        <a href="#dossiers">Dossiers</a>
+        <button class="text-button" id="openArchive" type="button">Field notes</button>
+      </nav>
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-label="Toggle interface sound">
+        <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="sound-label">Sound off</span>
+      </button>
+    </header>
+
+    <aside class="chapter-rail" id="chapterRail" aria-label="Dossier navigation">
+      <span class="rail-line"><i id="railProgress"></i></span>
+      <a href="#diablo" data-target="diablo"><b>01</b><small>NOIR</small></a>
+      <a href="#testarossa" data-target="testarossa"><b>02</b><small>BLANC</small></a>
+      <a href="#carrera" data-target="carrera"><b>03</b><small>JAUNE</small></a>
+      <a href="#ultima" data-target="ultima"><b>04</b><small>VIOLET</small></a>
+    </aside>
+
+    <main id="top">
+      <section class="hero cinematic-prologue" id="prologue" aria-labelledby="heroTitle">
+        <div class="hero-sticky">
+          <div class="spline-stage" aria-hidden="true">
+            <canvas id="splineCanvas" class="spline-canvas"></canvas>
+            <div class="spline-fallback" id="splineFallback"><i></i><i></i><i></i><i></i><b></b></div>
+            <div class="spline-status"><span></span> SPLINE CORE / LIVE SCENE</div>
+          </div>
+
+          <div class="hero-image-stack" aria-hidden="true">
+            <img class="is-active" src="/assets/diablo-scene.jpg" alt="" />
+            <img src="/assets/testarossa-scene.jpg" alt="" />
+            <img src="/assets/carrera-scene.jpg" alt="" />
+            <img src="/assets/ultima-scene.jpg" alt="" />
+          </div>
+          <div class="hero-wash" aria-hidden="true"></div>
+          <div class="hero-orbit orbit-a" aria-hidden="true"></div>
+          <div class="hero-orbit orbit-b" aria-hidden="true"></div>
+
+          <div class="prologue-beats" aria-label="Prologue story">
+            <article class="story-beat is-visible" data-start="-0.05" data-end="0.21">
+              <span>PROLOGUE / BEFORE NAMES</span>
+              <h2>Before names,<br />there were <em>colors.</em></h2>
+              <p>Ancient as creation. Unbound by shape. Four primordial wills waited in the dark.</p>
+            </article>
+            <article class="story-beat" data-start="0.24" data-end="0.42">
+              <span>INCITING EVENT / A SUMMONING</span>
+              <h2>Then came<br /><em>Rimuru.</em></h2>
+              <p>A new world. A new master. And a gesture more powerful than any spell: a name.</p>
+            </article>
+            <article class="story-beat story-beat--right" data-start="0.45" data-end="0.63">
+              <span>THE NAMES / MACHINES OF LEGEND</span>
+              <h2>Not titles.<br /><em>Velocity.</em></h2>
+              <p>Diablo. Testarossa. Carrera. Ultima. Each name carried the silhouette of impossible speed.</p>
+            </article>
+            <article class="story-beat story-beat--right" data-start="0.66" data-end="0.82">
+              <span>THE TRANSFORMATION / FOUR ARRIVALS</span>
+              <h2>Power found<br /><em>a body.</em></h2>
+              <p>Four colors became four people. Four machines became four myths. This is where their stories converge.</p>
+            </article>
+          </div>
+
+          <div class="hero-content hero-title-card" id="heroTitleCard">
+            <div class="eyebrow"><span></span> A motion picture in four acts — BN.04</div>
+            <h1 id="heroTitle" class="hero-title"><span>Primordial</span><em>Velocity</em></h1>
+            <p class="hero-deck">Four ancient demons. Four machines that turned their names into legend. An interactive study of power, silhouette, and speed.</p>
+            <div class="hero-actions">
+              <a class="magnetic-button" href="#dossiers"><span>Enter Act I</span><i>↘</i></a>
+              <button class="ghost-button" id="openManifesto" type="button">Read the premise <i>+</i></button>
+            </div>
+          </div>
+
+          <div class="hero-index" aria-hidden="true">
+            <div><small>ARCHIVE SIGNAL</small><strong id="heroSubject">PRIMORDIAL CORE / UNNAMED</strong></div>
+            <span id="heroCounter">00 — 04</span>
+          </div>
+          <div class="scroll-cue" aria-hidden="true"><span></span><small>SCROLL TO ADVANCE FILM</small></div>
+        </div>
+      </section>
+
+      <section class="mythos" id="mythos" aria-labelledby="mythosTitle">
+        <div class="mythos-grid">
+          <div class="mythos-label reveal-on-scroll">
+            <span>FILE / ORIGIN</span>
+            <small>SUPER-CAR NOMENCLATURE</small>
+          </div>
+          <div class="mythos-copy">
+            <p class="lead reveal-on-scroll" id="mythosTitle">Rimuru gave the Primordials names borrowed from machines built to feel <em>impossible</em>.</p>
+            <p class="body reveal-on-scroll">The pairing is more than a naming joke: each silhouette echoes a temperament. Diablo is theatrical menace. Testarossa is aristocratic precision. Carrera is untamed force. Ultima is compact, volatile violence.</p>
+          </div>
+          <div class="name-matrix reveal-on-scroll" aria-label="Character and car name mapping">
+            <div><span>NOIR</span><i></i><b>DIABLO</b></div>
+            <div><span>BLANC</span><i></i><b>TESTAROSSA</b></div>
+            <div><span>JAUNE</span><i></i><b>CARRERA GT</b></div>
+            <div><span>VIOLET</span><i></i><b>ULTIMA GTR</b></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="dossiers" class="dossier-marker" aria-hidden="true"></div>
+
+      <section class="chapter theme-diablo" id="diablo" data-scene="diablo" data-accent="#ff2f35" data-image="/assets/diablo-scene.jpg" aria-labelledby="diabloTitle">
+        <div class="chapter-sticky">
+          <div class="scene-fallback" style="background-image:url('/assets/diablo-scene.jpg')"></div>
+          <div class="webgl-stage" id="diablo-stage" aria-hidden="true"></div>
+          <div class="chapter-gradient" aria-hidden="true"></div>
+          <div class="chapter-hud">
+            <header class="chapter-meta">
+              <span>BLACK NUMBERS / SUBJECT 01</span>
+              <span>STATUS <i></i> DEVIL LORD</span>
+            </header>
+            <div class="chapter-copy">
+              <div class="subject-mark">01 <span>NOIR</span></div>
+              <p class="kicker">Primordial Black × Lamborghini Diablo</p>
+              <h2 id="diabloTitle">DIABLO</h2>
+              <p class="chapter-lead">A perfect servant with the smile of a predator. Elegant, unreadable, and catastrophically loyal.</p>
+              <div class="spec-row">
+                <div><small>ORIGIN</small><strong>PRIMORDIAL<br />BLACK</strong></div>
+                <div><small>MACHINE</small><strong>1990<br />V12</strong></div>
+                <div><small>TOP SPEED</small><strong>325<br /><em>KM/H</em></strong></div>
+              </div>
+              <button class="inspect-button" type="button" data-inspect="diablo"><span>Inspect dossier</span><i>↗</i></button>
+            </div>
+            <div class="chapter-quote">
+              <span>DESIGN CODE / 001</span>
+              <blockquote>“Theatrical menace, cut into a razor wedge.”</blockquote>
+            </div>
+            <div class="telemetry" aria-hidden="true">
+              <span class="telemetry-ring"></span>
+              <small>AZIMUTH</small><b class="telemetry-value">117.4°</b>
+            </div>
+            <div class="section-progress"><i></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter theme-testarossa is-reverse" id="testarossa" data-scene="testarossa" data-accent="#ff5365" data-image="/assets/testarossa-scene.jpg" aria-labelledby="testarossaTitle">
+        <div class="chapter-sticky">
+          <div class="scene-fallback" style="background-image:url('/assets/testarossa-scene.jpg')"></div>
+          <div class="webgl-stage" id="testarossa-stage" aria-hidden="true"></div>
+          <div class="chapter-gradient" aria-hidden="true"></div>
+          <div class="chapter-hud">
+            <header class="chapter-meta">
+              <span>BLACK NUMBERS / SUBJECT 02</span>
+              <span>STATUS <i></i> DEVIL LORD</span>
+            </header>
+            <div class="chapter-copy">
+              <div class="subject-mark">02 <span>BLANC</span></div>
+              <p class="kicker">Primordial White × Ferrari Testarossa</p>
+              <h2 id="testarossaTitle">TESTAROSSA</h2>
+              <p class="chapter-lead">Diplomacy polished to a blade. Serene, immaculate, and most dangerous when she lowers her voice.</p>
+              <div class="spec-row">
+                <div><small>ORIGIN</small><strong>PRIMORDIAL<br />WHITE</strong></div>
+                <div><small>MACHINE</small><strong>1984<br />FLAT-12</strong></div>
+                <div><small>SIGNATURE</small><strong>SIDE<br /><em>STRAKES</em></strong></div>
+              </div>
+              <button class="inspect-button" type="button" data-inspect="testarossa"><span>Inspect dossier</span><i>↗</i></button>
+            </div>
+            <div class="chapter-quote">
+              <span>DESIGN CODE / 002</span>
+              <blockquote>“White silk over scarlet intent.”</blockquote>
+            </div>
+            <div class="telemetry" aria-hidden="true">
+              <span class="telemetry-ring"></span>
+              <small>AZIMUTH</small><b class="telemetry-value">084.9°</b>
+            </div>
+            <div class="section-progress"><i></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter theme-carrera" id="carrera" data-scene="carrera" data-accent="#ffc21c" data-image="/assets/carrera-scene.jpg" aria-labelledby="carreraTitle">
+        <div class="chapter-sticky">
+          <div class="scene-fallback" style="background-image:url('/assets/carrera-scene.jpg')"></div>
+          <div class="webgl-stage" id="carrera-stage" aria-hidden="true"></div>
+          <div class="chapter-gradient" aria-hidden="true"></div>
+          <div class="act-title-card" aria-hidden="true"><span>ACT III / JAUNE</span><h3>THE LIVING<br /><em>DETONATION</em></h3><p>The smile comes before the impact.</p></div>
+          <div class="chapter-hud">
+            <header class="chapter-meta">
+              <span>BLACK NUMBERS / SUBJECT 03</span>
+              <span>STATUS <i></i> DEVIL LORD</span>
+            </header>
+            <div class="chapter-copy">
+              <div class="subject-mark">03 <span>JAUNE</span></div>
+              <p class="kicker">Primordial Yellow × Porsche Carrera GT</p>
+              <h2 id="carreraTitle">CARRERA</h2>
+              <p class="chapter-lead">A walking detonation with a delinquent grin. Direct, fearless, and happiest at the edge of control.</p>
+              <div class="spec-row">
+                <div><small>ORIGIN</small><strong>PRIMORDIAL<br />YELLOW</strong></div>
+                <div><small>MACHINE</small><strong>2004<br />V10</strong></div>
+                <div><small>OUTPUT</small><strong>612<br /><em>PS</em></strong></div>
+              </div>
+              <button class="inspect-button" type="button" data-inspect="carrera"><span>Inspect dossier</span><i>↗</i></button>
+            </div>
+            <div class="chapter-quote">
+              <span>DESIGN CODE / 003</span>
+              <blockquote>“Sunlight weaponized at full throttle.”</blockquote>
+            </div>
+            <div class="telemetry" aria-hidden="true">
+              <span class="telemetry-ring"></span>
+              <small>AZIMUTH</small><b class="telemetry-value">212.6°</b>
+            </div>
+            <div class="section-progress"><i></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter theme-ultima is-reverse" id="ultima" data-scene="ultima" data-accent="#b55cff" data-image="/assets/ultima-scene.jpg" aria-labelledby="ultimaTitle">
+        <div class="chapter-sticky">
+          <div class="scene-fallback" style="background-image:url('/assets/ultima-scene.jpg')"></div>
+          <div class="webgl-stage" id="ultima-stage" aria-hidden="true"></div>
+          <div class="chapter-gradient" aria-hidden="true"></div>
+          <div class="chapter-hud">
+            <header class="chapter-meta">
+              <span>BLACK NUMBERS / SUBJECT 04</span>
+              <span>STATUS <i></i> DEVIL LORD</span>
+            </header>
+            <div class="chapter-copy">
+              <div class="subject-mark">04 <span>VIOLET</span></div>
+              <p class="kicker">Primordial Purple × Ultima GTR</p>
+              <h2 id="ultimaTitle">ULTIMA</h2>
+              <p class="chapter-lead">Playful cruelty in a compact frame. She turns curiosity into poison and every battlefield into a laboratory.</p>
+              <div class="spec-row">
+                <div><small>ORIGIN</small><strong>PRIMORDIAL<br />PURPLE</strong></div>
+                <div><small>MACHINE</small><strong>GTR<br />V8</strong></div>
+                <div><small>0—60 MPH</small><strong>2.6<br /><em>SEC</em></strong></div>
+              </div>
+              <button class="inspect-button" type="button" data-inspect="ultima"><span>Inspect dossier</span><i>↗</i></button>
+            </div>
+            <div class="chapter-quote">
+              <span>DESIGN CODE / 004</span>
+              <blockquote>“Small footprint. Catastrophic radius.”</blockquote>
+            </div>
+            <div class="telemetry" aria-hidden="true">
+              <span class="telemetry-ring"></span>
+              <small>AZIMUTH</small><b class="telemetry-value">304.1°</b>
+            </div>
+            <div class="section-progress"><i></i></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="compare" aria-labelledby="compareTitle">
+        <div class="compare-head reveal-on-scroll">
+          <div><span>ARCHIVE / SYNTHESIS</span><small>ALL SUBJECTS CLEARED</small></div>
+          <h2 id="compareTitle">FOUR COLORS.<br /><em>ONE BLACK NUMBER.</em></h2>
+        </div>
+        <div class="compare-grid">
+          <a href="#diablo" class="compare-card reveal-on-scroll" style="--card:#ff2f35; --image:url('/assets/diablo-scene.jpg')"><span>01 / NOIR</span><b>DIABLO</b><i>View subject ↗</i></a>
+          <a href="#testarossa" class="compare-card reveal-on-scroll" style="--card:#ff5365; --image:url('/assets/testarossa-scene.jpg')"><span>02 / BLANC</span><b>TESTAROSSA</b><i>View subject ↗</i></a>
+          <a href="#carrera" class="compare-card reveal-on-scroll" style="--card:#ffc21c; --image:url('/assets/carrera-scene.jpg')"><span>03 / JAUNE</span><b>CARRERA</b><i>View subject ↗</i></a>
+          <a href="#ultima" class="compare-card reveal-on-scroll" style="--card:#b55cff; --image:url('/assets/ultima-scene.jpg')"><span>04 / VIOLET</span><b>ULTIMA</b><i>View subject ↗</i></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-mark">PØ</div>
+      <div>
+        <b>PRIMORDIAL VELOCITY</b>
+        <p>A fan-made interactive editorial concept. Character and automotive properties belong to their respective rights holders.</p>
+      </div>
+      <div class="footer-links">
+        <button type="button" id="footerArchive">Research notes</button>
+        <a href="#top">Return to top ↑</a>
+      </div>
+      <small>DESIGN SYSTEM / BN-2026</small>
+    </footer>
+
+    <dialog class="archive-dialog" id="archiveDialog">
+      <button class="dialog-close" type="button" aria-label="Close dialog">×</button>
+      <div class="dialog-index">FIELD NOTES / 04</div>
+      <h2 id="dialogTitle">THE NAMING LINEAGE</h2>
+      <div id="dialogBody">
+        <p>This fan-made study uses the four Tempest-aligned Primordial Demons and the supercars referenced by their names. Visuals are newly generated editorial art informed by canonical appearance descriptions and each production car's recognizable silhouette.</p>
+        <div class="source-list">
+          <a href="https://tensura.fandom.com/wiki/Diablo" target="_blank" rel="noreferrer"><span>CHARACTER</span> Diablo / Noir ↗</a>
+          <a href="https://tensura.fandom.com/wiki/Testarossa" target="_blank" rel="noreferrer"><span>CHARACTER</span> Testarossa / Blanc ↗</a>
+          <a href="https://tensura.fandom.com/wiki/Carrera" target="_blank" rel="noreferrer"><span>CHARACTER</span> Carrera / Jaune ↗</a>
+          <a href="https://tensura.fandom.com/wiki/Ultima" target="_blank" rel="noreferrer"><span>CHARACTER</span> Ultima / Violet ↗</a>
+          <a href="https://newsroom.porsche.com/en/2025/history/porsche-25-years-world-premiere-carrera-gt-40609.html" target="_blank" rel="noreferrer"><span>MACHINE</span> Carrera GT archive ↗</a>
+          <a href="https://en.wikipedia.org/wiki/Lamborghini_Diablo" target="_blank" rel="noreferrer"><span>MACHINE</span> Diablo overview ↗</a>
+          <a href="https://en.wikipedia.org/wiki/Ferrari_Testarossa" target="_blank" rel="noreferrer"><span>MACHINE</span> Testarossa overview ↗</a>
+          <a href="https://en.wikipedia.org/wiki/Ultima_GTR" target="_blank" rel="noreferrer"><span>MACHINE</span> Ultima GTR overview ↗</a>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
